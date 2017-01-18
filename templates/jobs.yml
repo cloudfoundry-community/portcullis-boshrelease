@@ -9,12 +9,12 @@ update:
   serial: false
 
 jobs:
-  - name: just_install_packages
+  - name: portcullis
     templates:
-    - name: just_install_packages
+    - name: portcullis
       release: portcullis
     instances: 1
-    persistent_disk: 0
+    persistent_disk: 4096
     resource_pool: small_z1
     networks: (( param "please set just_install_package networks" ))
 

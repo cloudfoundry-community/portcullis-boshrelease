@@ -1,0 +1,77 @@
+---
+name: portcullis
+packages:
+- portcullis
+templates:
+  bin/ctl: bin/ctl
+  bin/monit_debugger: bin/monit_debugger
+  data/properties.sh.erb: data/properties.sh
+  helpers/ctl_setup.sh: helpers/ctl_setup.sh
+  helpers/ctl_utils.sh: helpers/ctl_utils.sh
+  config/portcullis_config.yml.erb: config/portcullis_config.yml
+
+properties:
+  #General Configuration
+  portcullis.log_level:
+    description: "The minimum urgency of a log message required for it to appear
+      in the logs. Valid values are: debug, info, warn, error, crit, none.
+      Capitalization doesn't matter"
+    default: info
+  
+  #API Server Configuration
+  portcullis.api.port:
+    description: The port that the user API listens on
+    default: 9824
+  portcullis.api.description:
+    description: A message that describes this deployment, visible from the API
+      info endpoint. Optional.
+  portcullis.api.auth.type:
+    description: "The type of authentication used for API requests. Valid values
+      are: none, basic"
+
+  #Basic auth config -- Only used if portcullis.api.auth.type is "basic"
+  portcullis.api.auth.basic.username:
+    description: The username of the basic auth admin user.
+  portcullis.api.auth.basic.password:
+    description: The password of the basic auth admin user.
+
+  #Service Broker Server Configuration
+  portcullis.broker.port:
+    description: The port which the broker API listens on. 
+    default: 8238
+  portcullis.broker.cf.api_address:
+    description: The address at which the CloudFoundry API node is located
+    example: http://api.bosh-lite.com
+  portcullis.broker.cf.admin:
+    description: The username of an admin account for Cloud Foundry, such that
+      security groups for all orgs/spaces can be manipulated
+  portcullis.broker.cf.password:
+    description: The password for the admin user given at 
+      portcullis.broker.cf.admin
+  
+  #Storage Backend Configuration
+  portcullis.store.type:
+    description: "The type of storage backend to use. Valid values are: dummy,
+      postgres. Dummy isn't recommended unless you don't care if your data 
+      completely disappears every time the process is restarted (in-memory 
+      testing db)"
+  
+  #Dummy Store Config. Only used if portcullis.store.type is set to dummy
+  portcullis.store.dummy.confirm:
+    description: Set to true if you're really sure you want to use this. Safety
+      switch for my conscience.
+    default: false
+
+  #Postgres Store Config. Only used if portcullis.store.type is set to postgres
+  portcullis.store.postgres.host:
+    description: The hostname/ip address of the target Postgres server
+    example: 192.168.99.100
+  portcullis.store.postgres.port:
+    description: The port which the target Postgres server is listening on
+  portcullis.store.postgres.username:
+    description: The username to connect to the target database with
+  portcullis.store.postgres.password:
+    description: The password of the user described at 
+      portcullis.store.postgres.username
+  portcullis.store.postgres.dbname:
+    description: The name of the database to connect to

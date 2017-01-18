@@ -1,0 +1,5 @@
+check process portcullis
+  with pidfile /var/vcap/sys/run/portcullis/portcullis.pid
+  start program "/var/vcap/jobs/portcullis/bin/monit_debugger portcullis_ctl '/var/vcap/jobs/portcullis/bin/ctl start'"
+  stop program "/var/vcap/jobs/portcullis/bin/monit_debugger portcullis_ctl '/var/vcap/jobs/portcullis/bin/ctl stop'"
+  group vcap

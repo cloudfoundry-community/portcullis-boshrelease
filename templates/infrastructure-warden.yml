@@ -12,9 +12,24 @@ update:
   update_watch_time: 1000-30000
 
 jobs:
-  - name: just_install_packages
+  - name: portcullis
     networks:
       - name: portcullis1
+    properties: 
+      portcullis:
+        api:
+          description: A BOSH-Lite Test Portcullis
+          auth:
+            type: none
+        broker:
+          cf:
+            api_address: http://api.bosh-lite.com
+            admin: admin
+            password: admin
+        store:
+          type: dummy
+          dummy:
+            confirm: true
 
 compilation:
   cloud_properties:

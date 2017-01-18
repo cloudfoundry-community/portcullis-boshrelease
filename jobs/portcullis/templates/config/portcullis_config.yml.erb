@@ -1,0 +1,34 @@
+store:
+  type: <%= p("portcullis.store.type") %>
+  config:
+    <% if p("portcullis.store.type") == "dummy" then %>
+    confirm: <%= p("portcullis.store.dummy.confirm") %>
+    <% elsif p("portcullis.store.type") == "postgres" then %>
+    username: "<%= p("portcullis.store.postgres.username") %>"
+    password: "<%= p("portcullis.store.postgres.password") %>"
+    host: "<%= p("portcullis.store.postgres.host") %>"
+    port: "<%= p("portcullis.store.postgres.port") %>"
+    dbname: "<%= p("portcullis.store.postgres.dbname") %>"
+    <% else
+      raise "portcullis.store.type must be either 'dummy' or 'postgres'"
+     end %>
+api:
+  port: <%= p("portcullis.api.port") %>
+  <% if_p("portcullis.api.description") do |desc| %>
+  description: <%= desc %>
+  <% end %>
+  auth:
+    type: "<%= p("portcullis.api.auth.type") %>"
+    config:
+      <% if p("portcullis.api.auth.type") == "basic" then %>
+      admin: <%= p("portcullis.api.auth.basic.admin") %>
+      password: <%= p("portcullis.api.auth.basic.password") %>
+      <% end %>
+broker:
+  port: <%= p("portcullis.broker.port") %>
+  cf_api_address: <%= p("portcullis.broker.cf.api_address") %>
+  cf_admin: <%= p("portcullis.broker.cf.admin") %>
+  cf_password: <%= p("portcullis.broker.cf.password") %>
+log_level: <%= p("portcullis.log_level") %>
+
+  
