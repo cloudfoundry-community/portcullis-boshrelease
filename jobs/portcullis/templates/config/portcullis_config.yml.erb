@@ -18,6 +18,9 @@ api:
   description: <%= desc %>
   <% end %>
   auth:
+  <% if !["none", "basic"].include? p("portcullis.api.auth.type")
+    raise "portcullis.api.auth.type must be either 'none' or 'basic'"
+  end %>
     type: "<%= p("portcullis.api.auth.type") %>"
     <% if p("portcullis.api.auth.type") == "basic" then %>
     config:
