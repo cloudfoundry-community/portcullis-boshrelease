@@ -19,11 +19,11 @@ api:
   <% end %>
   auth:
     type: "<%= p("portcullis.api.auth.type") %>"
+    <% if p("portcullis.api.auth.type") == "basic" then %>
     config:
-      <% if p("portcullis.api.auth.type") == "basic" then %>
       admin: <%= p("portcullis.api.auth.basic.admin") %>
       password: <%= p("portcullis.api.auth.basic.password") %>
-      <% end %>
+    <% end %>
 broker:
   port: <%= p("portcullis.broker.port") %>
   cf_api_address: <%= p("portcullis.broker.cf.api_address") %>
