@@ -41,7 +41,7 @@ header "Creating candidate BOSH release..."
 bosh -n create release
 bosh -n upload release --rebase || echo "Continuing..."
 
-cat > ~/.api_addr.yml << EOF
+cat > ./api_addr.yml << EOF
 ---
 jobs:
 - name: portcullis
