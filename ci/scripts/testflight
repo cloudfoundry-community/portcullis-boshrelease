@@ -41,8 +41,18 @@ header "Creating candidate BOSH release..."
 bosh -n create release
 bosh -n upload release --rebase || echo "Continuing..."
 
+cat > ~/.api_addr.yml << EOF
+---
+jobs:
+- name: portcullis
+  properties:
+    broker:
+      cf:
+        api_address: ${CF_API_ADDRESS}
+EOF
+
 header "Deploying to BOSH-lite..."
-./templates/make_manifest warden
+./templates/make_manifest warden ./api_addr.yml
 bosh -n deploy
 
 if [[ -n ${TEST_ERRAND} ]]; then

@@ -80,6 +80,7 @@ jobs:
             BOSH_LITE_PASSWORD:   (( grab meta.bosh-lite.password ))
             BOSH_LITE_DEPLOYMENT: (( grab meta.bosh-lite.deployment ))
             TEST_ERRAND:          (( grab meta.test-errand || ~ ))
+            CF_API_ADDRESS:       (( grab meta.cf.api_address ))
       on_failure:
         put: notify
         params:

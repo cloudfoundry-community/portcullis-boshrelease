@@ -12,6 +12,9 @@ meta:
     target: https://10.58.111.44:25555
     deployment: portcullis-warden
 
+  cf:
+    api_address: (( vault "secret/pipelines/portcullis/cf:api_address" ))
+
   github:
     owner: cloudfoundry-community
     repo: portcullis-boshrelease
