@@ -46,9 +46,10 @@ cat > ./api_addr.yml << EOF
 jobs:
 - name: portcullis
   properties:
-    broker:
-      cf:
-        api_address: ${CF_API_ADDRESS}
+    portcullis:
+      broker:
+        cf:
+          api_address: ${CF_API_ADDRESS}
 EOF
 
 header "Deploying to BOSH-lite..."
