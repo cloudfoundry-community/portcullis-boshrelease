@@ -13,16 +13,16 @@ meta:
     deployment: portcullis-warden
 
   cf:
-    api_address: (( vault "secret/pipelines/portcullis/cf:api_address" ))
+    api_address: (( vault "secret/pipelines/portcullis-boshrelease/cf:api_address" ))
 
   github:
     owner: cloudfoundry-community
     repo: portcullis-boshrelease
-    access_token: (( vault "secret/pipelines/portcullis/github:token" ))
-    private_key: (( vault "secret/pipelines/portcullis/github:private" ))
+    access_token: (( vault "secret/pipelines/portcullis-boshrelease/github:token" ))
+    private_key: (( vault "secret/pipelines/portcullis-boshrelease/github:private" ))
 
   slack:
-    channel: (( vault "secret/pipelines/portcullis/slack:webhook" ))
+    channel: (( vault "secret/pipelines/portcullis-boshrelease/slack:webhook" ))
     webhook: '#botspam'
 
   initial_version: 0.1.0
