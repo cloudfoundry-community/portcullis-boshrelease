@@ -18,6 +18,12 @@ properties:
       in the logs. Valid values are: debug, info, warn, error, crit, none.
       Capitalization doesn't matter"
     default: info
+  portcullis.poststart_timeout:
+    description: "(int) The amount of time in seconds the post-start script will 
+      wait before checking to see if the Portcullis API is up and listening. The
+      default value should suffice in most cases, but can be increased for 
+      environments which are slow to start up"
+    default: 5
   
   #API Server Configuration
   portcullis.api.port:

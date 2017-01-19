@@ -1,4 +1,4 @@
 #!/bin/bash
 
-sleep 5
+sleep <%= p("portcullis.poststart_timeout") %>
 curl localhost:<%= p("portcullis.api.port") %>/v1/info
